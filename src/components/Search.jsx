@@ -1,54 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-// var Search = ({searchBar}) => {
-
-//   // console.log('props:', searchBar);
-//     return (
-//       <div>
-//         <input
-//         type="text"
-//         onChange={ (event) => searchBar(event.target.value)}
-//         // onChange={this.handleInputChange.bind(this)}
-//         />
-//       </div>
-//     );
-//   }
-
-
+import React from "react";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: ''
-    }
+      title: "",
+    };
+    // create the binding to this Search component for handleInputChange func
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleInputChange(event) {
-    console.log('event target: ', event.target.value);
-      this.setState({
-        title: event.target.value
-      });
+    console.log("event target: ", event.target.value);
+    this.setState({
+      title: event.target.value,
+    });
   }
 
-    render() {
-      return (
-        <form onSubmit={ (event) => this.props.handleOnSubmit(event, this.state.title)}>
-          <input
-            type="text"
-            onChange={ (event) => this.handleInputChange(event)}
-            // onChange={ (event) => handleInputChange(event.target.value)}
-          />
-          <input type="submit" value="Submit" />
-      </form>
+  render() {
+    return (
+      <div className="search-wrapper">
+        <form
+          onSubmit={(event) =>
+            this.props.handleOnSubmit(event, this.state.title)
+          }
+        >
+          <div className="search-bar-space">
+            <input
+              type="text"
+              onChange={(event) => this.handleInputChange(event)}
+              placeholder="Search..."
+            />
+            <input type="submit" value="Go!" />
+          </div>
+        </form>
+      </div>
     );
   }
 }
-
-// Search.propTypes = {
-//   searchBar: PropTypes.func.isRequired
-// };
 
 export default Search;

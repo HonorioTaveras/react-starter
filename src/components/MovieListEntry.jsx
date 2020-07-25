@@ -1,16 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-var MovieListEntry = ({movie}) => (
+var MovieListEntry = ({ movie }) => (
   <div className="movie-list-entry">
-    <div className="movie-list">
-      {movie.title}
-    </div>
+    <div className="movie-list">{movie.title}</div>
   </div>
 );
 
 MovieListEntry.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
 };
 
 export default MovieListEntry;
