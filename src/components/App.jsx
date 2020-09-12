@@ -40,18 +40,16 @@ class App extends React.Component {
   }
 
   newMovieSubmitHandler(event) {
-    let movie = { title: '' + this.state.pendingMovie }
-    let movieList = [movie, ...this.state.list]
+    let movie = { title: "" + this.state.pendingMovie };
+    let movieList = [movie, ...this.state.list];
     console.log("this got called list: ", this.state.list);
     event.preventDefault();
-    // event.stopPropagation();
-    // event.nativeEvent.stopImmediatePropagation();
-    this.setState({
-      // list: this.state.list.concat(this.state.pendingMovie),
-      videos: movieList,
-      pendingMovie: "",
-    },
-    () => console.log("list: ", this.state.list)
+    this.setState(
+      {
+        videos: movieList,
+        pendingMovie: "",
+      },
+      () => console.log("list: ", this.state.list)
     );
   }
 
@@ -71,8 +69,8 @@ class App extends React.Component {
         </div>
         <div>
           <MovieList movies={this.state.videos} />
-        {/* </div>
-        <div> */}
+        </div>
+        <div>
           <List list={this.state.list} />
         </div>
       </div>
