@@ -1,24 +1,43 @@
+const path = require('path');
+
+const DIST_DIR = path.resolve(__dirname, 'public');
+const SRC_DIR = path.resolve(__dirname, 'client/src');
+
 module.exports = {
-  entry: __dirname + '/src/index.js',
+  entry: `${SRC_DIR}/index.js`,
+  output: {
+    path: DIST_DIR,
+    filename: 'bundle.js',
+  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        test: /\.jsx?/,
+        include: SRC_DIR,
+        loader: 'babel-loader',
+        query: {
+          presets: ['@babel/preset-react', '@babel/preset-env'],
+        },
       },
-    {
-        // For pure CSS (without CSS modules)
-        test: /\.css$/i,
-        exclude: /\.module\.css$/i,
-        use: ['style-loader', 'css-loader'],
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+          },
+        ],
       },
-    ]
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
+    ],
   },
-  output: {
-        filename: 'bundle.js',
-        path: __dirname + '/dist'
-      }
 };

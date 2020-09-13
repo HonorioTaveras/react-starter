@@ -6,13 +6,19 @@
   "scripts": {
     "build": "webpack --mode production",
     "react-dev": "webpack -d --watch",
-    "start": "live-server ./dist"
+    "start": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "Honorio Taveras <https://github.com/HonorioTaveras>",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^3.6.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
